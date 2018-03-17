@@ -1,8 +1,12 @@
 package com.example.c1618639.myapplication;
 
-/**
- * Created by calum on 17/03/18.
- */
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class MapActivity {
+public class MapActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map);
+    }
 }
