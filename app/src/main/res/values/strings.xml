@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Spot a Bee</string>
+    <string name="drawer_header_title">Menu</string>
     <string name="title_home">Home</string>
-    <string name="title_aboutus">About Us</string>
+    <string name="title_about_us">About Us</string>
     <string name="title_activity_login">Sign in</string>
     <string name="title_activity_map">Bee Maps</string>
     <string name="title_information">Information</string>
     <string name="title_camera">Camera</string>
-    <string name="title_mygallery">My Gallery</string>
+    <string name="title_my_gallery">My Gallery</string>
     <string name="title_media">Media</string>
 
     <!-- Strings related to login -->
@@ -21,4 +22,10 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
