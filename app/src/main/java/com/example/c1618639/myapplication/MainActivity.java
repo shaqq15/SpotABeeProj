@@ -12,8 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.GridLayout;
-
+import android.support.v7.widget.CardView;
+import android.view.View;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 

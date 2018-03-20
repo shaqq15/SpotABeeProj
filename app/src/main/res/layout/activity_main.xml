@@ -41,6 +41,7 @@
         <!--Row 1-->
         <!--Column 1-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_about_us"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -80,6 +81,7 @@
 
         <!--Column 2-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_map"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -119,6 +121,7 @@
 
         <!--Column 3-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_info"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -159,6 +162,7 @@
         <!--Row 2-->
         <!--Column 1-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_camera"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -199,6 +203,7 @@
 
         <!--Column 2-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_gallery"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -238,6 +243,7 @@
 
         <!--Column 3-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_media"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
