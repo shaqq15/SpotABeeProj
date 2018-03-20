@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_drawer);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        //actionbar.setDisplayHomeAsUpEnabled(true);
+        //actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+
+        mDrawerLayout = findViewById(R.id.drawer_layout);
 
         mDrawerLayout.addDrawerListener(
                 new DrawerLayout.DrawerListener() {
@@ -78,19 +80,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                mDrawerLayout,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        );
 
 
-
-//        this.navDrawer = (DrawerLayout) this.findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this,
-//                this.navDrawer,
-//                toolbar,
-//                R.string.navigation_drawer_open,
-//                R.string.navigation_drawer_close
-//        );
-//        this.navDrawer.addDrawerListener(toggle);
-//        toggle.syncState();
+        this.mDrawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 //
 //
 //        this.navView = (NavigationView) findViewById(R.id.nav_view);

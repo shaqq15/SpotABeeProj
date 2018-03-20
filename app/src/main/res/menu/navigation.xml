@@ -8,36 +8,36 @@
         android:title="@string/title_home"
         app:showAsAction="never"/>
 
-    <item
-        android:id="@+id/navigation_aboutus"
-        android:title="@string/title_about_us"
-        app:showAsAction="never"/>
+    <!--<item-->
+        <!--android:id="@+id/navigation_aboutus"-->
+        <!--android:title="@string/title_about_us"-->
+        <!--app:showAsAction="never"/>-->
 
 
-    <item
-        android:id="@+id/navigation_beemap"
-        android:title="@string/title_activity_map"
-        app:showAsAction="never"/>
+    <!--<item-->
+        <!--android:id="@+id/navigation_beemap"-->
+        <!--android:title="@string/title_activity_map"-->
+        <!--app:showAsAction="never"/>-->
 
-    <item
-        android:id="@+id/navigation_information"
-        android:title="@string/title_information"
-        app:showAsAction="never"/>
+    <!--<item-->
+        <!--android:id="@+id/navigation_information"-->
+        <!--android:title="@string/title_information"-->
+        <!--app:showAsAction="never"/>-->
 
-    <item
-        android:id="@+id/navigation_camera"
-        android:title="@string/title_camera"
-        app:showAsAction="never"/>
+    <!--<item-->
+        <!--android:id="@+id/navigation_camera"-->
+        <!--android:title="@string/title_camera"-->
+        <!--app:showAsAction="never"/>-->
 
-    <item
-        android:id="@+id/navigation_mygallery"
-        android:title="@string/title_my_gallery"
-        app:showAsAction="never"/>
+    <!--<item-->
+        <!--android:id="@+id/navigation_mygallery"-->
+        <!--android:title="@string/title_my_gallery"-->
+        <!--app:showAsAction="never"/>-->
 
-    <item
-        android:id="@+id/navigation_media"
-        android:title="@string/title_media"
-        app:showAsAction="never"/>
+    <!--<item-->
+        <!--android:id="@+id/navigation_media"-->
+        <!--android:title="@string/title_media"-->
+        <!--app:showAsAction="never"/>-->
 
 
 </menu>
