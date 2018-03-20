@@ -38,7 +38,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            ImageView userImage = (ImageView)findViewById(R.id.userImg);
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            userImage.setImageBitmap(imageBitmap);
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
