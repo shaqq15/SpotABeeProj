@@ -20,5 +20,25 @@ private ImageView iv;
         Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mytransition);
         tv.startAnimation(myanim);
         iv.startAnimation(myanim);
+
+        myanim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+
     }
 }
