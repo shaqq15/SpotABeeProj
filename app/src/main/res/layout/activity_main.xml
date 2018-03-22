@@ -22,7 +22,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:text="Spot A Bee"
+            android:text="@string/app_name"
             android:textColor="@android:color/white"
             android:textSize="34sp" />
 
@@ -41,6 +41,7 @@
         <!--Row 1-->
         <!--Column 1-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_about_us"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -68,7 +69,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="About Us"
+                    android:text="@string/title_about_us"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -80,6 +81,7 @@
 
         <!--Column 2-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_map"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -107,7 +109,7 @@
                 <TextView
                     android:layout_width="98dp"
                     android:layout_height="wrap_content"
-                    android:text="Bee Maps"
+                    android:text="@string/title_activity_map"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -119,6 +121,7 @@
 
         <!--Column 3-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_info"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -146,7 +149,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Information"
+                    android:text="@string/title_information"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -159,6 +162,7 @@
         <!--Row 2-->
         <!--Column 1-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_camera"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -187,7 +191,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Camera"
+                    android:text="@string/title_camera"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -199,6 +203,7 @@
 
         <!--Column 2-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_gallery"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -226,7 +231,7 @@
                 <TextView
                     android:layout_width="99dp"
                     android:layout_height="wrap_content"
-                    android:text="My Gallery"
+                    android:text="@string/title_my_gallery"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
@@ -238,6 +243,7 @@
 
         <!--Column 3-->
         <android.support.v7.widget.CardView
+            android:id="@+id/card_view_media"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -265,7 +271,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Media"
+                    android:text="@string/title_media"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
