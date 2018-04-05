@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-Group_5_Spot_a_Bee_Project.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-Group_5_Spot_a_Bee_Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/Group_5_Spot_a_Bee_Project.iml" filepath="$PROJECT_DIR$/Group_5_Spot_a_Bee_Project.iml" />
-      <module fileurl="file://C:\Users\c1618639\Desktop\ClientProject\MyApplication\Group_5_Spot_a_Bee_Project.iml" filepath="C:\Users\c1618639\Desktop\ClientProject\MyApplication\Group_5_Spot_a_Bee_Project.iml" />
-      <module fileurl="file://C:\Users\c1538514\Desktop\Spot a bee\Group_5_Spot_a_Bee_Project\MyApplication.iml" filepath="C:\Users\c1538514\Desktop\Spot a bee\Group_5_Spot_a_Bee_Project\MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Group_5_Spot_a_Bee_Project-app.iml" filepath="$PROJECT_DIR$/app/Group_5_Spot_a_Bee_Project-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
