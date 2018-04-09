@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.support.v7.widget.CardView;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -102,6 +104,15 @@ public class MainActivity extends AppCompatActivity {
 //    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //        return false;
 //    }
+
+        CardView mapCardView = findViewById(R.id.card_view_map);
+        mapCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
     }
 
     @Override
