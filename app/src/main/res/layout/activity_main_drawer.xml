@@ -30,7 +30,8 @@
         </FrameLayout>
 
 
-         <include layout="@layout/activity_main" />
+        <include layout="@layout/activity_main" />
+        <include layout="@layout/fragment_about_us" />
 
     </android.support.v7.widget.LinearLayoutCompat>
 
