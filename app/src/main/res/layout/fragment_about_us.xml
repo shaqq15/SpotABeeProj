@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.c1618639.myapplication.AboutUsActivity">
+    tools:context="com.example.c1618639.myapplication.AboutUsFragment">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="128dp"
         android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
         android:text="About Us"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -22,18 +25,22 @@
         android:id="@+id/editText"
         android:layout_width="358dp"
         android:layout_height="103dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textMultiLine"
         android:textAlignment="viewStart"
         android:textSize="12sp"
         tools:layout_editor_absoluteX="13dp"
         tools:layout_editor_absoluteY="48dp"
-        tools:text="@string/paragraph1"/>
+        tools:text="@string/paragraph1" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="358dp"
         android:layout_height="168dp"
+        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/editText"
         android:ems="10"
         android:inputType="textMultiLine"
         android:textSize="12sp"
@@ -45,6 +52,9 @@
         android:id="@+id/textView3"
         android:layout_width="188dp"
         android:layout_height="26dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="200dp"
         android:text="What can I do to help?"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -56,6 +66,8 @@
         android:id="@+id/editText3"
         android:layout_width="351dp"
         android:layout_height="195dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textMultiLine"
         android:textSize="12sp"
@@ -64,8 +76,13 @@
         tools:text="@string/paragraph3" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="53dp"
         android:layout_height="335dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="29dp"
+        android:layout_toEndOf="@+id/editText"
         tools:layout_editor_absoluteX="340dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -74,4 +91,5 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
     </ScrollView>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
+
