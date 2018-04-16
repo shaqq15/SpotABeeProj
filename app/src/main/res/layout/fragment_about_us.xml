@@ -5,13 +5,26 @@
     android:id="@+id/fragmentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow"
     tools:context="com.example.c1618639.myapplication.AboutUsFragment">
+    <!--android:background="@drawable/bg"-->
 
-    <android.support.v7.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"/>
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/AboutUs"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/appCompatTextView"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="49dp"-->
+        <!--android:text="About Us"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="36sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:typeface="sans"-->
+        <!--android:visibility="visible" />-->
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <!--<android.support.v7.widget.AppCompatTextView-->
         <!--android:id="@+id/textView"-->
