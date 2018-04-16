@@ -88,21 +88,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected( MenuItem item) {
         int id = item.getItemId();
 
-        System.out.println("AAAAAAA");
-
         switch (id) {
             case R.id.menu_home:
-                System.out.println("TEST");
                 changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
                 break;
             case R.id.menu_about_us:
                 changeInternalFragment(new AboutUsFragment(), R.id.fragmentContainer);
                 break;
-            case R.id.menu_media:
-                changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
-                break;
+//            case R.id.menu_bee_map:
+//                changeInternalFragment(new MapFragment(), R.id.fragmentContainer);
+//                break;
             case R.id.menu_information:
                 changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
+                break;
+//            case R.id.menu_camera:
+//                changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
+//                break;
+//            case R.id.menu_my_gallery:
+//                changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
+//                break;
+            case R.id.menu_media:
+                changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
                 break;
         }
 
