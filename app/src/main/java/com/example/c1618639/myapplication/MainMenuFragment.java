@@ -58,13 +58,16 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-        /*CardView galleryCardView = v.findViewById(R.id.card_view_gallery);
+        CardView galleryCardView = v.findViewById(R.id.card_view_gallery);
         galleryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.fragmentContainer, new GalleryFragment());
+                ft.commit();
+                ft.addToBackStack(null);
             }
-        });*/
+        });
 
         CardView mediaCardView = v.findViewById(R.id.card_view_media);
         mediaCardView.setOnClickListener(new View.OnClickListener() {
