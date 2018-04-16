@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.Context;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,12 +35,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //actionbar.setDisplayHomeAsUpEnabled(true);
         //actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+        final SharedPreferences sp = this.getSharedPreferences("main_preferences", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sp.edit();
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
-        this.mDrawerLayout = (DrawerLayout) this.findViewById(R.id.drawer_layout);
+        mDrawerLayout.addDrawerListener(
+                new DrawerLayout.DrawerListener() {
+                    @Override
+                    public void onDrawerSlide(View drawerView, float slideOffset) {
+                        // Respond when the drawer's position changes
+                    }
+
+                    @Override
+                    public void onDrawerOpened(View drawerView) {
+                        int score = sp.getInt("score", 0);
+                        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                        View header = navigationView.getHeaderView(0);
+                        TextView scoreTextView = (TextView) header.findViewById(R.id.score);
+                        scoreTextView.setText(getString(R.string.drawer_header_score, score));
+                    }
+
+                    @Override
+                    public void onDrawerClosed(View drawerView) {
+                        // Respond when the drawer is closed
+                    }
+
+                    @Override
+                    public void onDrawerStateChanged(int newState) {
+                        // Respond when the drawer motion state changes
+                    }
+                }
+        );
+
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
