@@ -23,7 +23,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
  * Use the {@link MediaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MediaFragment extends YouTubeBaseActivity{
+public class MediaFragment extends Fragment{
     YouTubePlayerView youTubePlayerView;
     Button button;
     YouTubePlayer.OnInitializedListener onInitializedListener;
@@ -31,7 +31,7 @@ public class MediaFragment extends YouTubeBaseActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_media);
+        return new SampleView(R.layout.fragment_media);
         button = (Button) findViewById(R.id.PlayVideo);
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player_view);
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
