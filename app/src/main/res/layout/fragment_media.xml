@@ -26,6 +26,28 @@
             android:textColor="@android:color/white"
             android:textSize="34sp" />
 
+        <view
+            class="com.google.android.youtube.player.YouTubePlayerView"
+            id="@+id/view"
+            layout_alignEnd="@+id/textGrid"
+            layout_below="@+id/textGrid"
+            layout_marginEnd="23dp"
+            layout_marginTop="147dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/youtube_player_view" />
+
+        <Button
+            android:id="@+id/PlayVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/youtube_player_view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="49dp"
+            android:text="Play Video" />
+
     </RelativeLayout>
 
 
