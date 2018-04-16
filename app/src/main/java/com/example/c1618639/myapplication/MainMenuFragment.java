@@ -49,14 +49,14 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-        /*CardView cameraCardView = v.findViewById(R.id.card_view_camera);
+        CardView cameraCardView = v.findViewById(R.id.card_view_camera);
         cameraCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getActivity(), MapActivity.class);
+                Intent myIntent = new Intent(getActivity(), CameraActivity.class);
                 getActivity().startActivity(myIntent);
             }
-        });*/
+        });
 
         /*CardView galleryCardView = v.findViewById(R.id.card_view_gallery);
         galleryCardView.setOnClickListener(new View.OnClickListener() {
