@@ -106,7 +106,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            ImageView userImage = (ImageView)findViewById(R.id.userImg);
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            userImage.setImageBitmap(imageBitmap);
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
