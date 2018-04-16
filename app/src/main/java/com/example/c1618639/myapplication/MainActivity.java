@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         final SharedPreferences sp = this.getSharedPreferences("main_preferences", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sp.edit();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

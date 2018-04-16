@@ -1,6 +1,8 @@
 package com.example.c1618639.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.widget.Button;
@@ -35,6 +37,13 @@ public class CameraActivity extends AppCompatActivity {
 
     }
     private void takePhoto(){
+        final SharedPreferences sp = this.getSharedPreferences("main_preferences", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sp.edit();
+        int score = sp.getInt("score", 0);
+        score++;
+        editor.putInt("score", score);
+        editor.apply();
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
