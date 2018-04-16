@@ -183,8 +183,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="86dp"
-                    android:layout_height="82dp"
+                    android:layout_width="71dp"
+                    android:layout_height="69dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/camera" />
 
