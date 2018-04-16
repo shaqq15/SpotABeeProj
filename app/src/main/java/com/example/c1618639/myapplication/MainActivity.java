@@ -1,7 +1,6 @@
 package com.example.c1618639.myapplication;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,8 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.support.v7.widget.CardView;
 import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -95,9 +92,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_about_us:
                 changeInternalFragment(new AboutUsFragment(), R.id.fragmentContainer);
                 break;
-//            case R.id.menu_bee_map:
-//                changeInternalFragment(new MapFragment(), R.id.fragmentContainer);
-//                break;
+            case R.id.menu_bee_map:
+                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
+                MainActivity.this.startActivity(myIntent);
+                break;
             case R.id.menu_information:
                 changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
                 break;
@@ -111,15 +109,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
                 break;
         }
-
-//        CardView mapCardView = findViewById(R.id.card_view_map);
-//        mapCardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
-//                MainActivity.this.startActivity(myIntent);
-//            }
-//        });
 
         this.mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
