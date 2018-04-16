@@ -10,14 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class AboutUsFragment extends Fragment {
+
+public class MainMenuFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_about_us, container, false);
-
+        View v = inflater.inflate(R.layout.fragment_main_menu, container, false);
 
         return v;
     }
+
 }

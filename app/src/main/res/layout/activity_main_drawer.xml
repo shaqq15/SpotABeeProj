@@ -9,14 +9,9 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <FrameLayout
+        <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/content_frame"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -27,13 +22,16 @@
                 android:background="?attr/colorPrimary"
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-        </FrameLayout>
+
+            <RelativeLayout
+                android:id="@+id/fragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 
-        <include layout="@layout/activity_main" />
-        <include layout="@layout/fragment_about_us" />
+        </android.support.v7.widget.LinearLayoutCompat>
 
-    </android.support.v7.widget.LinearLayoutCompat>
 
 
     <android.support.design.widget.NavigationView
