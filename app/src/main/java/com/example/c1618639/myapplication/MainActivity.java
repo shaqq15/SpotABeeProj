@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_about_us:
                 changeInternalFragment(new AboutUsFragment(), R.id.fragmentContainer);
                 break;
+            case R.id.menu_media:
+                changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
+                break;
         }
 
 //        CardView mapCardView = findViewById(R.id.card_view_map);
