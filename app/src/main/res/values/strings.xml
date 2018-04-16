@@ -45,6 +45,14 @@
     <string name="location_error">Could not determine location!</string>
     <string name="location_permission_refused">Cannot display the map without access to your location!</string>
 
+    <!-- InfoPageFragment strings -->
+    <string name="info_instructions_content">Instructions and Information.
+        There are three main parts to this application, which I will now explain. Please read the about us section for some background information on what we are doing and why.
+        Firstly there is the camera functionality. If you press the camera option on the main menu or within the navigation drop down, the camera on your phone should open so that you can take a picture in the normal way. If your phone does not have a camera then unfortunately you will not be able to use the application.
+        Secondly we have the gallery. this is where the images you have taken with the camera will be stored.
+        Thirdly we have the map. When you open the map, it should zoom in on your current location. You can drag with your fingers to see around the area local to you.</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
