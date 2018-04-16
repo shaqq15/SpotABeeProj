@@ -1,6 +1,8 @@
 package com.example.c1618639.myapplication;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,15 +17,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+//import static com.example.c1618639.myapplication.CameraActivity.REQUEST_IMAGE_CAPTURE;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     //private TextView mTextMessage;
 
     private static final int DEFAULT_DRAWER_ITEM = R.id.menu_home;
     private DrawerLayout mDrawerLayout;
     private NavigationView navView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         );
 
 
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -96,6 +104,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            ImageView userImage = (ImageView)findViewById(R.id.userImg);
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            userImage.setImageBitmap(imageBitmap);
+        }
     }
 
     @Override
@@ -134,12 +152,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_information:
                 changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
                 break;
-//            case R.id.menu_camera:
-//                changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
-//                break;
-//            case R.id.menu_my_gallery:
-//                changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
-//                break;
+            case R.id.menu_camera:
+//                Intent openCameraIntent = new Intent(MainActivity.this, CameraActivity.class);
+//                MainActivity.this.startActivity(openCameraIntent);
+                Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
+                MainActivity.this.startActivity(cameraIntent);
+                break;
+            case R.id.menu_my_gallery:
+                changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
+                break;
             case R.id.menu_media:
                 changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
                 break;
