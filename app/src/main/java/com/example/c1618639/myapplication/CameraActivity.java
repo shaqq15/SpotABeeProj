@@ -3,7 +3,7 @@ package com.example.c1618639.myapplication;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
+import android.widget.Button;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,11 +23,22 @@ public class CameraActivity extends AppCompatActivity {
 
         //code adapted from https://developer.android.com/training/camera/photobasics.html#TaskPhotoView
 
+        takePhoto();
+
+        Button fab = (Button) findViewById(R.id.take_photo_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                takePhoto();
+            }
+
+        });
+
+    }
+    private void takePhoto(){
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
-
     }
 
 }
