@@ -3,10 +3,15 @@ package com.example.c1618639.myapplication;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+<<<<<<< HEAD
+=======
+import android.support.annotation.Nullable;
+>>>>>>> master
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.Button;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -15,47 +20,6 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MediaFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MediaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MediaFragment extends Fragment{
-    YouTubePlayerView youTubePlayerView;
-    Button button;
-    YouTubePlayer.OnInitializedListener onInitializedListener;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        return new SampleView(R.layout.fragment_media);
-        button = (Button) findViewById(R.id.PlayVideo);
-        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player_view);
-        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("Fex4B0U43AU&t=11s");
-
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
-            }
-        };
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                youTubePlayerView.initialize(PlayerConfig.API_KEY, onInitializedListener);
-            }
-        });
-
-    }
-}
 //
 //    // TODO: Rename parameter arguments, choose names that match
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -145,3 +109,15 @@ public class MediaFragment extends Fragment{
 //        void onFragmentInteraction(Uri uri);
 //    }
 //}
+
+
+public class MediaFragment extends Fragment {
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_media, container, false);
+
+
+        return v;
+    }
+}

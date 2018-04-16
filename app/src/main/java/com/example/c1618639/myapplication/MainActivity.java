@@ -1,7 +1,11 @@
 package com.example.c1618639.myapplication;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -9,17 +13,24 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.support.v7.widget.CardView;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+//import static com.example.c1618639.myapplication.CameraActivity.REQUEST_IMAGE_CAPTURE;
 
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     //private TextView mTextMessage;
 
+    private static final int DEFAULT_DRAWER_ITEM = R.id.menu_home;
     private DrawerLayout mDrawerLayout;
-//    private NavigationView navView;
-//    private static final int DEFAULT_DRAWER_ITEM = 0;
+    private NavigationView navView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,22 +44,11 @@ public class MainActivity extends AppCompatActivity {
         //actionbar.setDisplayHomeAsUpEnabled(true);
         //actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+        final SharedPreferences sp = this.getSharedPreferences("main_preferences", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sp.edit();
+
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        menuItem.setChecked(true);
-                        // close drawer when item is tapped
-                        mDrawerLayout.closeDrawers();
-
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
-
-                        return true;
-                    }
-                });
+        navigationView.setNavigationItemSelectedListener(this);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -61,7 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onDrawerOpened(View drawerView) {
-                        // Respond when the drawer is opened
+                        int score = sp.getInt("score", 0);
+                        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                        View header = navigationView.getHeaderView(0);
+                        TextView scoreTextView = (TextView) header.findViewById(R.id.score);
+                        scoreTextView.setText(getString(R.string.drawer_header_score, score));
                     }
 
                     @Override
@@ -77,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -88,31 +93,27 @@ public class MainActivity extends AppCompatActivity {
 
         this.mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-//
-//
-//        this.navView = (NavigationView) findViewById(R.id.nav_view);
-//        this.navView.setNavigationItemSelectedListener(this);
 
 
-//        if (savedInstanceState == null) {
-//            this.navView.setCheckedItem(DEFAULT_DRAWER_ITEM);
-//            this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
-//        }
+        this.navView = (NavigationView) findViewById(R.id.nav_view);
+        this.navView.setNavigationItemSelectedListener(this);
 
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        return false;
-//    }
+        if (savedInstanceState == null) {
+            this.navView.setCheckedItem(DEFAULT_DRAWER_ITEM);
+            this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
+        }
 
-        CardView mapCardView = findViewById(R.id.card_view_map);
-        mapCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
-                MainActivity.this.startActivity(myIntent);
-            }
-        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            ImageView userImage = (ImageView)findViewById(R.id.userImg);
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            userImage.setImageBitmap(imageBitmap);
+        }
     }
 
     @Override
@@ -124,4 +125,65 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START))
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected( MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.menu_home:
+                changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
+                break;
+            case R.id.menu_about_us:
+                changeInternalFragment(new AboutUsFragment(), R.id.fragmentContainer);
+                break;
+            case R.id.menu_bee_map:
+                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
+                MainActivity.this.startActivity(myIntent);
+                break;
+            case R.id.menu_information:
+                changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
+                break;
+            case R.id.menu_camera:
+//                Intent openCameraIntent = new Intent(MainActivity.this, CameraActivity.class);
+//                MainActivity.this.startActivity(openCameraIntent);
+                Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
+                MainActivity.this.startActivity(cameraIntent);
+                break;
+            case R.id.menu_my_gallery:
+                changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
+                break;
+            case R.id.menu_media:
+                changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
+                break;
+        }
+
+        this.mDrawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void changeInternalFragment(Fragment fragment, int fragmentContainer){
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+
+        supportFragmentManager.beginTransaction()
+                .replace(fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit();
+
+
+    }
+
+
+
+
 }
+
+

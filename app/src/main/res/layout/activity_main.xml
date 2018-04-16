@@ -1,19 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg"
-    android:weightSum="10"
     tools:context="com.example.c1618639.myapplication.MainActivity">
 
 
-    <RelativeLayout
-        android:layout_weight="2"
+    <android.support.v7.widget.AppCompatTextView
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="match_parent"
+        android:text="@string/title_my_gallery" />
 
         <TextView
             android:id="@+id/textGrid"
@@ -286,3 +281,5 @@
     </GridLayout>
 
 </LinearLayout>
+
+</FrameLayout>

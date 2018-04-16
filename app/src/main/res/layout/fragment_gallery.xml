@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.c1618639.myapplication.GalleryFragment">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView android:id="@+id/userImg"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:layout_margin="275px"
+            android:src="@mipmap/ic_launcher" />
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</FrameLayout>
