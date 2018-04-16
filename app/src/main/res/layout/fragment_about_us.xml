@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.c1618639.myapplication.AboutUsFragment">
+    <!--android:background="@drawable/bg"-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/AboutUs"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/appCompatTextView"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="49dp"-->
+        <!--android:text="About Us"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="36sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:typeface="sans"-->
+        <!--android:visibility="visible" />-->
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="128dp"-->
+        <!--android:layout_height="32dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="18dp"-->
+        <!--android:text="About Us"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textAllCaps="true"-->
+        <!--android:textSize="16sp"-->
+        <!--android:textStyle="bold"-->
+        <!--tools:layout_editor_absoluteX="128dp"-->
+        <!--tools:layout_editor_absoluteY="16dp" />-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/editText"-->
+        <!--android:layout_width="358dp"-->
+        <!--android:layout_height="103dp"-->
+        <!--android:layout_below="@+id/textView"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textMultiLine"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textSize="12sp"-->
+        <!--tools:layout_editor_absoluteX="13dp"-->
+        <!--tools:layout_editor_absoluteY="48dp"-->
+        <!--tools:text="@string/paragraph1" />-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/editText2"-->
+        <!--android:layout_width="358dp"-->
+        <!--android:layout_height="168dp"-->
+        <!--android:layout_alignStart="@+id/editText"-->
+        <!--android:layout_below="@+id/editText"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textMultiLine"-->
+        <!--android:textSize="12sp"-->
+        <!--tools:layout_editor_absoluteX="13dp"-->
+        <!--tools:layout_editor_absoluteY="151dp"-->
+        <!--tools:text="@string/paragraph2" />-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/textView3"-->
+        <!--android:layout_width="188dp"-->
+        <!--android:layout_height="26dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="200dp"-->
+        <!--android:text="What can I do to help?"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textAllCaps="true"-->
+        <!--tools:layout_editor_absoluteX="98dp"-->
+        <!--tools:layout_editor_absoluteY="334dp"-->
+        <!--tools:text="What can I do to help?" />-->
+
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/editText3"-->
+        <!--android:layout_width="351dp"-->
+        <!--android:layout_height="195dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="15dp"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textMultiLine"-->
+        <!--android:textSize="12sp"-->
+        <!--tools:layout_editor_absoluteX="17dp"-->
+        <!--tools:layout_editor_absoluteY="360dp"-->
+        <!--tools:text="@string/paragraph3" />-->
+
+</RelativeLayout>
+
