@@ -11,10 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v7.widget.CardView;
+import android.widget.TextView;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.Context;
 
 public class MainActivity extends AppCompatActivity {
-
     //private TextView mTextMessage;
 
     private DrawerLayout mDrawerLayout;
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         //actionbar.setDisplayHomeAsUpEnabled(true);
         //actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
+        final SharedPreferences sp = this.getSharedPreferences("main_preferences", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sp.edit();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
@@ -61,7 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onDrawerOpened(View drawerView) {
-                        // Respond when the drawer is opened
+                        int score = sp.getInt("score", 0);
+                        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                        View header = navigationView.getHeaderView(0);
+                        TextView scoreTextView = (TextView) header.findViewById(R.id.score);
+                        scoreTextView.setText(getString(R.string.drawer_header_score, score));
                     }
 
                     @Override
