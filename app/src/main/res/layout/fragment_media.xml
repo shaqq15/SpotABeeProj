@@ -1,12 +1,57 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@drawable/bg"
+android:weightSum="10"
+tools:context="com.example.c1618639.myapplication.MediaFragment">
+
+<!-- TODO: Update blank fragment layout -->
+<RelativeLayout
+    android:layout_weight="2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.c1618639.myapplication.MediaFragment">
+    android:layout_height="match_parent">
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/textGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:text="@string/title_media"
+        android:textColor="@android:color/white"
+        android:textSize="34sp" />
+
+    <!--<view-->
+        <!--class="com.google.android.youtube.player.YouTubePlayerView"-->
+        <!--id="@+id/view"-->
+        <!--layout_alignEnd="@+id/textGrid"-->
+        <!--layout_below="@+id/textGrid"-->
+        <!--layout_marginEnd="23dp"-->
+        <!--layout_marginTop="147dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:id="@+id/youtube_player_view" />-->
+
+    <Button
+        android:id="@+id/PlayVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_below="@+id/youtube_player_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        android:text="Play Video" />
+
 
 </RelativeLayout>
+
+
+</FrameLayout>
+
