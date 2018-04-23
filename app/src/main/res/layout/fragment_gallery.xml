@@ -23,13 +23,14 @@
 
     <GridView
         android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:columnWidth="90dp"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:horizontalSpacing="10dp"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
+        android:layout_marginTop="200dp"
         android:verticalSpacing="10dp" />
 
 </FrameLayout>
