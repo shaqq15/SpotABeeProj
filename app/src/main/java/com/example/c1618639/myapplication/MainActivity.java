@@ -140,6 +140,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mDrawerLayout.closeDrawer(GravityCompat.START);
         else
             super.onBackPressed();
+
+        changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
+
     }
 
     @Override
@@ -183,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         supportFragmentManager.beginTransaction()
                 .replace(fragmentContainer, fragment)
-//                .addToBackStack(null)
+                .addToBackStack(null)
                 .commit();
 
 
