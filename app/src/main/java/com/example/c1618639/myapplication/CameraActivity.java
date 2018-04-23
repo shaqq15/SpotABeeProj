@@ -77,7 +77,7 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
                 Toast.makeText(this, getResources().getString(R.string.location_error), Toast.LENGTH_LONG).show();
             }else {
                 LatLng detectedLocation = new LatLng(l.getLatitude(), l.getLongitude());
-                
+
             }
         }
     }
