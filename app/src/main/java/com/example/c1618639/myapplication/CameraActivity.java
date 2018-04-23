@@ -95,6 +95,12 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
-    
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CameraActivity.this, MainActivity.class);
+        CameraActivity.this.startActivity(intent);
+    }
+
 }
 
