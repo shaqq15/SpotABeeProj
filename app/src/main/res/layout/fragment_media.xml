@@ -5,6 +5,7 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 android:background="@drawable/bg"
 android:weightSum="10"
+android:id="@+id/youtube"
 tools:context="com.example.c1618639.myapplication.MediaFragment">
 
 <!-- TODO: Update blank fragment layout -->
@@ -39,22 +40,21 @@ tools:context="com.example.c1618639.myapplication.MediaFragment">
         <!--android:layout_centerVertical="true"-->
         <!--android:id="@+id/youtube_player_view" />-->
 
-    <Button
-        android:id="@+id/PlayVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textGrid"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_horizontal"
-        android:text="Play Video" />
+    <!--<Button-->
+        <!--android:id="@+id/PlayVideo"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignEnd="@+id/textGrid"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:text="Play Video" />-->
 
-    <fragment
-        android:name="com.google.android.youtube.player.YoutubePlayerfragment"
-        android:id="@+id/youtubeplayerfragment"
+    <FrameLayout
+        android:id="@+id/youtube_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_centerHorizontal="true"
+        android:visibility="visible" />
 
 
 
