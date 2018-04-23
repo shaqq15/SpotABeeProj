@@ -2,6 +2,7 @@ package com.example.c1618639.myapplication;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -20,12 +21,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+
 //import static com.example.c1618639.myapplication.CameraActivity.REQUEST_IMAGE_CAPTURE;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     //private TextView mTextMessage;
+    private final String filenameExternal = "Images";
 
     private static final int DEFAULT_DRAWER_ITEM = R.id.menu_home;
     private DrawerLayout mDrawerLayout;
@@ -109,10 +113,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-//            ImageView userImage = (ImageView)findViewById(R.id.userImg);
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            userImage.setImageBitmap(imageBitmap);
+            String state = Environment.getExternalStorageState();
+            //external storage availability check
+
+        System.out.println("fAAAAAAAAA");
+
+        if (!Environment.MEDIA_MOUNTED.equals(state)) {
+            return;
+            }
+        File file = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_PICTURES), filenameExternal);
         }
+
+        System.out.println("fijcreifdjndw");
     }
 
     @Override
@@ -181,8 +194,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-
-}
+    }
 
 
