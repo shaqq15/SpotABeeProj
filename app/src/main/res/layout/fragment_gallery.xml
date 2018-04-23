@@ -5,18 +5,9 @@
     android:background="@drawable/bg"
     tools:context="com.example.c1618639.myapplication.GalleryFragment">
 
-    <android.support.v7.widget.LinearLayoutCompat
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/userImg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="275px"
-            android:src="@mipmap/ic_launcher" />
-    </android.support.v7.widget.LinearLayoutCompat>
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/textGrid"
@@ -29,5 +20,17 @@
         android:text="@string/title_my_gallery"
         android:textColor="@android:color/white"
         android:textSize="34sp" />
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnWidth="90dp"
+        android:gravity="center_horizontal"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:layout_marginTop="200dp"
+        android:verticalSpacing="10dp" />
 
 </FrameLayout>
