@@ -48,6 +48,15 @@ tools:context="com.example.c1618639.myapplication.MediaFragment">
         android:layout_gravity="center_horizontal"
         android:text="Play Video" />
 
+    <fragment
+        android:name="com.google.android.youtube.player.YoutubePlayerfragment"
+        android:id="@+id/youtubeplayerfragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+
 
 </RelativeLayout>
 
