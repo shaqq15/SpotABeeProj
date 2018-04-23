@@ -60,7 +60,7 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
                         this.mFusedLocationClient.getLastLocation().addOnCompleteListener(this);
                     }
                 } else {
-                    Toast.makeText(this, getResources().getString(R.string.location_permission_refused), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getResources().getString(R.string.location_error), Toast.LENGTH_LONG).show();
                 }
                 return;
             }
