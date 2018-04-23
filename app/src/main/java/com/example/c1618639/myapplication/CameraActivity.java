@@ -50,4 +50,10 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CameraActivity.this, MainActivity.class);
+        CameraActivity.this.startActivity(intent);
+    }
 }
+

@@ -2,6 +2,7 @@ package com.example.c1618639.myapplication;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -79,6 +80,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
         );
 
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                final Intent mainIntent = new Intent(MainActivity.this, CameraActivity.class);
+//                startActivity(mainIntent);
+//                finish();
+//            }
+//        }, 10);
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -174,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         supportFragmentManager.beginTransaction()
                 .replace(fragmentContainer, fragment)
-                .addToBackStack(null)
+//                .addToBackStack(null)
                 .commit();
 
 
