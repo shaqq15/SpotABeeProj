@@ -65,9 +65,8 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
                         this.mFusedLocationClient.getLastLocation().addOnCompleteListener(this);
                     }
                 }else{
-
+                    showManualLocationDialog();
                 }
-                return;
             }
         }
     }
