@@ -85,8 +85,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         );
 
 
-
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -112,84 +110,83 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
+    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            String state = Environment.getExternalStorageState();
-            //external storage availability check
+        @Override
+        protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+            if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+                Bundle extras = data.getExtras();
+                String state = Environment.getExternalStorageState();
+                //external storage availability check
 
-        System.out.println("fAAAAAAAAA");
+                System.out.println("fAAAAAAAAA");
 
-        if (!Environment.MEDIA_MOUNTED.equals(state)) {
-            return;
+                if (!Environment.MEDIA_MOUNTED.equals(state)) {
+                    return;
+                }
+                File file = new File(Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_PICTURES), filenameExternal);
             }
-        File file = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_PICTURES), filenameExternal);
+
+            System.out.println("fijcreifdjndw");
         }
 
-        System.out.println("fijcreifdjndw");
-    }
 
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START))
-            mDrawerLayout.closeDrawer(GravityCompat.START);
-        else
-            super.onBackPressed();
-
-        changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
-
-    }
-
-    @Override
-    public boolean onNavigationItemSelected( MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.menu_home:
-                changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
-                break;
-            case R.id.menu_about_us:
-                changeInternalFragment(new AboutUsFragment(), R.id.fragmentContainer);
-                break;
-            case R.id.menu_bee_map:
-                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
-                MainActivity.this.startActivity(myIntent);
-                break;
-            case R.id.menu_information:
-                changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
-                break;
-            case R.id.menu_camera:
-//                Intent openCameraIntent = new Intent(MainActivity.this, CameraActivity.class);
-//                MainActivity.this.startActivity(openCameraIntent);
-                Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
-                MainActivity.this.startActivity(cameraIntent);
-                break;
-            case R.id.menu_my_gallery:
-                changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
-                break;
-            case R.id.menu_media:
-                changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
-                break;
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+            switch (item.getItemId()) {
+                case android.R.id.home:
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
         }
 
-        this.mDrawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
+        @Override
+        public void onBackPressed () {
+            if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START))
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+            else
+                super.onBackPressed();
+
+            changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
+
+        }
+
+        @Override
+        public boolean onNavigationItemSelected (MenuItem item){
+            int id = item.getItemId();
+
+            switch (id) {
+                case R.id.menu_home:
+                    changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
+                    break;
+                case R.id.menu_about_us:
+                    changeInternalFragment(new AboutUsFragment(), R.id.fragmentContainer);
+                    break;
+                case R.id.menu_bee_map:
+                    Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
+                    MainActivity.this.startActivity(myIntent);
+                    break;
+                case R.id.menu_information:
+                    changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
+                    break;
+                case R.id.menu_camera:
+                    Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
+                    MainActivity.this.startActivity(cameraIntent);
+                    break;
+                case R.id.menu_my_gallery:
+                    changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
+                    break;
+                case R.id.menu_media:
+                    changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
+                    break;
+            }
+
+            this.mDrawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        }
+
 
     private void changeInternalFragment(Fragment fragment, int fragmentContainer){
         FragmentManager supportFragmentManager = getSupportFragmentManager();
@@ -202,10 +199,3 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 }
-
-
-
-
-    }
-
-
