@@ -1,8 +1,10 @@
 package com.example.c1618639.myapplication;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
@@ -14,6 +16,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +28,8 @@ import static com.example.c1618639.myapplication.MainActivity.REQUEST_IMAGE_CAPT
 public class CameraActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 1;
+    private FusedLocationProviderClient mFusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +40,16 @@ public class CameraActivity extends AppCompatActivity {
 
         //code adapted from https://developer.android.com/training/camera/photobasics.html#TaskPhotoView
 
-        takePhoto();
+        getLocationAndTakePhoto();
 
+        /*
         Button fab = (Button) findViewById(R.id.take_photo_button);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                takePhoto();
+                getLocationAndTakePhoto();
             }
-
         });
+        */
 
     }
 
@@ -81,7 +87,7 @@ public class CameraActivity extends AppCompatActivity {
 //        }
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
+        takePictureIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
             File photoFile = null;
@@ -101,5 +107,30 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
+    private void showManualLocationDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        ManualLocationFragment manualLocationFragment = ManualLocationFragment.newInstance();
+        manualLocationFragment.show(fm, "fragment_manual_location");
+
+        fm.executePendingTransactions();
+        manualLocationFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                final SharedPreferences sp = getSharedPreferences("location_preferences", Context.MODE_PRIVATE);
+                Gson gson = new Gson();
+                String json = sp.getString("manual_location", "");
+                LatLng point = gson.fromJson(json, LatLng.class);
+                takePhoto(point);
+            }
+        });
+
+    }
+
+    /*@Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CameraActivity.this, MainActivity.class);
+        CameraActivity.this.startActivity(intent);
+    }*/
 
 }
+

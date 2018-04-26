@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -107,7 +109,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
         }
 
-    }
+        Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -128,6 +132,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         System.out.println("fijcreifdjndw");
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -144,6 +150,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mDrawerLayout.closeDrawer(GravityCompat.START);
         else
             super.onBackPressed();
+
+        changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
+
     }
 
     @Override
@@ -192,6 +201,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+}
+
+
 
 
     }

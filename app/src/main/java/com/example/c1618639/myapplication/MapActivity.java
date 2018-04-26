@@ -1,7 +1,8 @@
 package com.example.c1618639.myapplication;
 
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
@@ -17,10 +18,14 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import android.support.annotation.NonNull;
-import android.widget.Toast;
+import com.google.gson.Gson;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback, OnCompleteListener<Location> {
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentManager;
+
+
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, OnCompleteListener<Location> {
 
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 1;
     private GoogleMap mMap;
@@ -68,9 +73,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                         this.mFusedLocationClient.getLastLocation().addOnCompleteListener(this);
                     }
                 } else {
-                    Toast.makeText(this, getResources().getString(R.string.location_permission_refused), Toast.LENGTH_LONG).show();
-                    Intent myIntent = new Intent(MapActivity.this, MainActivity.class);
-                    MapActivity.this.startActivity(myIntent);
+                    showManualLocationDialog();
                 }
                 return;
             }
@@ -80,15 +83,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     @Override
     public void onComplete(@NonNull Task<Location> task) {
         if(!task.isSuccessful()){
-            Toast.makeText(this, getResources().getString(R.string.location_error), Toast.LENGTH_LONG).show();
-            Intent myIntent = new Intent(MapActivity.this, MainActivity.class);
-            MapActivity.this.startActivity(myIntent);
+            showManualLocationDialog();
         }else{
             Location l = task.getResult();
             if(l == null){
-                Toast.makeText(this, getResources().getString(R.string.location_error), Toast.LENGTH_LONG).show();
-                Intent myIntent = new Intent(MapActivity.this, MainActivity.class);
-                MapActivity.this.startActivity(myIntent);
+                showManualLocationDialog();
             }else {
                 LatLng detectedLocation = new LatLng(l.getLatitude(), l.getLongitude());
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(detectedLocation, 15));
@@ -96,4 +95,28 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             }
         }
     }
+
+    private void showManualLocationDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        ManualLocationFragment manualLocationFragment = ManualLocationFragment.newInstance();
+        manualLocationFragment.show(fm, "fragment_manual_location");
+
+        fm.executePendingTransactions();
+        manualLocationFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+
+                final SharedPreferences sp = getSharedPreferences("location_preferences", Context.MODE_PRIVATE);
+                Gson gson = new Gson();
+                String json = sp.getString("manual_location", "");
+                LatLng point = gson.fromJson(json, LatLng.class);
+
+                mMap.clear();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 15));
+                mMap.addMarker(new MarkerOptions().position(point).title("Current Location"));
+            }
+        });
+
+    }
+
 }

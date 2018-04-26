@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.c1618639.myapplication.ManualLocationFragment"
+    android:orientation="vertical"
+    android:weightSum="9">
+
+    <fragment
+        android:id="@+id/manualLocationMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        tools:context="com.example.c1618639.myapplication.MapActivity" />
+
+    <TextView
+        android:id="@+id/tap_text"
+        android:text="@string/manual_location_message"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_height="0dp"/>
+
+    <Button
+        android:id="@+id/manual_location_confirm_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/manual_location_confirm" />
+</LinearLayout>

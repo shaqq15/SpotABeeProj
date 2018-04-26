@@ -43,7 +43,6 @@
 
     <!-- MapActivity strings -->
     <string name="location_error">Could not determine location!</string>
-    <string name="location_permission_refused">Cannot display the map without access to your location!</string>
 
     <!-- InfoPageFragment strings -->
     <string name="info_instructions_content">Instructions and Information.
@@ -53,6 +52,10 @@
         Thirdly we have the map. When you open the map, it should zoom in on your current location. You can drag with your fingers to see around the area local to you.</string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="manual_location_message">We were unable to determine your location. Please zoom in and tap your location on the map.</string>
+    <string name="manual_location_pinned">You have pinned your location. If you have made a mistake, please tap again. </string>
+    <string name="manual_location_confirm">Confirm selected location</string>
+
+    <string name="number_of_bees_intro">Please enter how many bees are in the photo.</string>
+    <string name="number_of_bees_confirm">Save Photo</string>
 </resources>
