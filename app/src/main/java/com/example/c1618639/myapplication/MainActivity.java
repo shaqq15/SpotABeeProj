@@ -81,14 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
         );
 
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                final Intent mainIntent = new Intent(MainActivity.this, CameraActivity.class);
-//                startActivity(mainIntent);
-//                finish();
-//            }
-//        }, 10);
+
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -113,17 +106,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
         }
 
+        Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-//            ImageView userImage = (ImageView)findViewById(R.id.userImg);
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            userImage.setImageBitmap(imageBitmap);
-        }
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

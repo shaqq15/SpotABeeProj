@@ -47,13 +47,14 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
 
         getLocationAndTakePhoto();
 
+        /*
         Button fab = (Button) findViewById(R.id.take_photo_button);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 getLocationAndTakePhoto();
             }
-
         });
+        */
 
     }
     @Override
@@ -88,6 +89,21 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+
+            System.out.println("TAKEN PHOTO");
+//            ImageView userImage = (ImageView)findViewById(R.id.userImg);
+//            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            userImage.setImageBitmap(imageBitmap);
+        }
+        else{
+            finish();
+        }
+    }
+
     private void getLocationAndTakePhoto(){
         this.mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -106,6 +122,7 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
         editor.apply();
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        takePictureIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
@@ -130,11 +147,11 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
 
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         Intent intent = new Intent(CameraActivity.this, MainActivity.class);
         CameraActivity.this.startActivity(intent);
-    }
+    }*/
 
 }
 
