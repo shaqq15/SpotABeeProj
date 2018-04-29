@@ -59,16 +59,6 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
         //code adapted from https://developer.android.com/training/camera/photobasics.html#TaskPhotoView
 
         getLocationAndTakePhoto();
-
-        /*
-        Button fab = (Button) findViewById(R.id.take_photo_button);
-        fab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                getLocationAndTakePhoto();
-            }
-        });
-        */
-
     }
 
     String mCurrentPhotoPath;
