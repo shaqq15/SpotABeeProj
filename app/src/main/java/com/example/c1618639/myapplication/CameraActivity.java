@@ -171,9 +171,9 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
             Bundle extras = data.getExtras();
 
             System.out.println("TAKEN PHOTO");
-//            ImageView userImage = (ImageView)findViewById(R.id.userImg);
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            userImage.setImageBitmap(imageBitmap);
+            ImageView userImage = (ImageView)findViewById(R.id.userImg);
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            userImage.setImageBitmap(imageBitmap);
         } else {
             finish();
         }
