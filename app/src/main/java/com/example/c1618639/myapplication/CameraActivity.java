@@ -170,13 +170,30 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
 
-            System.out.println("TAKEN PHOTO");
             ImageView userImage = (ImageView)findViewById(R.id.userImg);
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             userImage.setImageBitmap(imageBitmap);
+
+            // display number of bees fragment
+            showNumberOfBeesDialogue();
         } else {
             finish();
         }
+    }
+
+    private void showNumberOfBeesDialogue() {
+        FragmentManager fm = getSupportFragmentManager();
+        NumberOfBeesFragment numberOfBeesFragment = NumberOfBeesFragment.newInstance();
+        fm.beginTransaction().add(numberOfBeesFragment, "fragment_number_of_bees").commitAllowingStateLoss();
+
+
+        /*numberOfBeesFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                // obtain info and save
+            }
+        });*/
+
     }
 
     private void getLocationAndTakePhoto() {
