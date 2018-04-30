@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,38 +163,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-    @Override
-    public boolean onNavigationItemSelected( MenuItem item) {
-        int id = item.getItemId();
+        @Override
+        public boolean onNavigationItemSelected (MenuItem item){
+            int id = item.getItemId();
 
-        switch (id) {
-            case R.id.menu_home:
-                changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
-                break;
-            case R.id.menu_about_us:
-                changeInternalFragment(new AboutUsFragment(), R.id.fragmentContainer);
-                break;
-            case R.id.menu_bee_map:
-                Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
-                MainActivity.this.startActivity(myIntent);
-                break;
-            case R.id.menu_information:
-                changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
-                break;
-            case R.id.menu_camera:
-//                Intent openCameraIntent = new Intent(MainActivity.this, CameraActivity.class);
-//                MainActivity.this.startActivity(openCameraIntent);
-                Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
-                MainActivity.this.startActivity(cameraIntent);
-                break;
-            case R.id.menu_imagga:
-//                changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
-                Intent apiIntent = new Intent(MainActivity.this, API.class);
-                MainActivity.this.startActivity(apiIntent);
-                break;
-            case R.id.menu_media:
-                changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
-                break;
+            switch (id) {
+                case R.id.menu_home:
+                    changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
+                    break;
+                case R.id.menu_about_us:
+                    changeInternalFragment(new AboutUsFragment(), R.id.fragmentContainer);
+                    break;
+                case R.id.menu_bee_map:
+                    Intent myIntent = new Intent(MainActivity.this, MapActivity.class);
+                    MainActivity.this.startActivity(myIntent);
+                    break;
+                case R.id.menu_information:
+                    changeInternalFragment(new InfoPageFragment(), R.id.fragmentContainer);
+                    break;
+                case R.id.menu_camera:
+                    Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
+                    MainActivity.this.startActivity(cameraIntent);
+                    break;
+                case R.id.menu_my_gallery:
+                    changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
+                    break;
+                case R.id.menu_media:
+                    changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);
+                    break;
+            }
+
+            this.mDrawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         }
 
 

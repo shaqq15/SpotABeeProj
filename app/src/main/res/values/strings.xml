@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Spot a Bee</string>
-    <string name="title_image_scanner">Image Scanner</string>
     <string name="drawer_header_title">Menu</string>
     <string name="drawer_header_score">Score: %1$d</string>
     <string name="drawer_header_score_newbie">Newbie</string>
@@ -62,23 +61,4 @@
 
     <string name="number_of_bees_intro">Please enter how many bees are in the photo.</string>
     <string name="number_of_bees_confirm">Save Photo</string>
-
-    <string name="action_exit">Exit</string>
-    <string name="copied">Copied To Clipboard</string>
-    <string name="hashtags_default">It looks empty here! Choose a picture by tapping above</string>
-    <string name="copy">Copy</string>
-    <string name="share">Share</string>
-    <string name="share_subject">Hashtags</string>
-    <string name="share_title">Amazing Hashtags</string>
-    <string name="share_using">Share Using</string>
-    <string name="welcome">Welcome to AutoHash</string>
-    <string name="analyzing">Analyzing Your Image</string>
-    <string name="getting_hashtags">Getting Best Hashtags For You</string>
-    <string name="something_wrong">opps! Something went wrong</string>
-    <string name="take_photo">Take Photo</string>
-    <string name="choose_gallery">Choose from Gallery</string>
-    <string name="cancel">Cancel</string>
-    <string name="add_photo">Add Photo!</string>
-    <string name="perm_allow">You need to allow writing to external storage to use this app</string>
-    <string name="powered">Powered by Imagga</string>
 </resources>

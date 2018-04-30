@@ -21,8 +21,8 @@
             android:id="@+id/menu_camera"
             android:title="@string/title_camera"/>
         <item
-            android:id="@+id/menu_imagga"
-            android:title="@string/title_image_scanner"/>
+            android:id="@+id/menu_my_gallery"
+            android:title="@string/title_my_gallery"/>
         <item
             android:id="@+id/menu_media"
             android:title="@string/title_media"/>
