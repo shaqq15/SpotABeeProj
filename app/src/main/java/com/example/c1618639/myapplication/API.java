@@ -51,6 +51,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class API extends AppCompatActivity {
@@ -59,6 +61,8 @@ public class API extends AppCompatActivity {
     TextView textView = null,poweredText = null;
     Button copy = null,share=null;
     Context mContext = null;
+    String imageFileName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +72,10 @@ public class API extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         createRefs();
+
+        if (getIntent().getAction() != null && getIntent().getAction().equals("dophoto")){
+            selectImage22();
+        }
     }
 
     private void requestPerms() {
@@ -379,19 +387,29 @@ public class API extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void selectImage22(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        imageFileName = "JPEG_" + timeStamp + ".jpg";
+        File f = new File(android.os.Environment.getExternalStorageDirectory(), imageFileName);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+        startActivityForResult(intent, 1);
+    }
+
+
     private void selectImage() {
-        final CharSequence[] options = {getStringFromResource(R.string.take_photo),getStringFromResource(R.string.choose_gallery),getStringFromResource(R.string.cancel)};
+        final CharSequence[] options ={getStringFromResource(R.string.choose_gallery),getStringFromResource(R.string.cancel)};
         AlertDialog.Builder builder = new AlertDialog.Builder(API.this);
         builder.setTitle(getStringFromResource(R.string.add_photo));
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals(getStringFromResource(R.string.take_photo))) {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                    startActivityForResult(intent, 1);
-                } else if (options[item].equals(getStringFromResource(R.string.choose_gallery))) {
+//                if (options[item].equals(getStringFromResource(R.string.take_photo))) {
+//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+//                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+//                    startActivityForResult(intent, 1);
+                  if (options[item].equals(getStringFromResource(R.string.choose_gallery))) {
                     Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, 2);
                 } else if (options[item].equals(getStringFromResource(R.string.cancel))) {
@@ -410,7 +428,7 @@ public class API extends AppCompatActivity {
             if (requestCode == 1) {
                 File f = new File(Environment.getExternalStorageDirectory().toString());
                 for (File temp : f.listFiles()) {
-                    if (temp.getName().equals("temp.jpg")) {
+                    if (temp.getName().equals(imageFileName)) {
                         f = temp;
                         break;
                     }
