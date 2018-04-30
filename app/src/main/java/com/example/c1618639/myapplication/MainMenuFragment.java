@@ -53,19 +53,19 @@ public class MainMenuFragment extends Fragment {
         cameraCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getActivity(), CameraActivity.class);
+                //Intent myIntent = new Intent(getActivity(), CameraActivity.class);
+                Intent myIntent = new Intent(getActivity(), API.class);
+                myIntent.setAction("dophoto");
                 getActivity().startActivity(myIntent);
             }
         });
 
-        CardView galleryCardView = v.findViewById(R.id.card_view_gallery);
+        CardView galleryCardView = v.findViewById(R.id.card_view_imagga);
         galleryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.fragmentContainer, new GalleryFragment());
-                ft.commit();
-                ft.addToBackStack(null);
+                Intent apiIntent = new Intent(getActivity(), API.class);
+               getActivity().startActivity(apiIntent);
             }
         });
 
