@@ -2,7 +2,7 @@ package com.example.c1618639.myapplication;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -22,12 +22,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+
 //import static com.example.c1618639.myapplication.CameraActivity.REQUEST_IMAGE_CAPTURE;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     //private TextView mTextMessage;
+    private final String filenameExternal = "Images";
 
     private static final int DEFAULT_DRAWER_ITEM = R.id.menu_home;
     private DrawerLayout mDrawerLayout;
@@ -68,6 +71,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         View header = navigationView.getHeaderView(0);
                         TextView scoreTextView = (TextView) header.findViewById(R.id.score);
                         scoreTextView.setText(getString(R.string.drawer_header_score, score));
+
+                        TextView levelTextView = (TextView) header.findViewById(R.id.level);
+
+                        if(score < 15){
+                            levelTextView.setText(getString(R.string.drawer_header_score_newbie));
+                        }else if(score < 100){
+                            levelTextView.setText(getString(R.string.drawer_header_score_intermediate));
+                        }else{
+                            levelTextView.setText(getString(R.string.drawer_header_score_senior));
+                        }
                     }
 
                     @Override
@@ -81,15 +94,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 }
         );
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                final Intent mainIntent = new Intent(MainActivity.this, CameraActivity.class);
-//                startActivity(mainIntent);
-//                finish();
-//            }
-//        }, 10);
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -114,38 +118,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.navView.getMenu().performIdentifierAction(DEFAULT_DRAWER_ITEM, 0);
         }
 
+        Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-//            ImageView userImage = (ImageView)findViewById(R.id.userImg);
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            userImage.setImageBitmap(imageBitmap);
+        @Override
+        protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+            if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+                Bundle extras = data.getExtras();
+                String state = Environment.getExternalStorageState();
+                //external storage availability check
+
+                System.out.println("fAAAAAAAAA");
+
+                if (!Environment.MEDIA_MOUNTED.equals(state)) {
+                    return;
+                }
+                File file = new File(Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_PICTURES), filenameExternal);
+            }
+
+            System.out.println("fijcreifdjndw");
         }
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
+
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+            switch (item.getItemId()) {
+                case android.R.id.home:
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
-    }
 
-    @Override
-    public void onBackPressed() {
-        if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START))
-            mDrawerLayout.closeDrawer(GravityCompat.START);
-        else
-            super.onBackPressed();
+        @Override
+        public void onBackPressed () {
+            if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START))
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+            else
+                super.onBackPressed();
 
-        changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
+            changeInternalFragment(new MainMenuFragment(), R.id.fragmentContainer);
 
-    }
+        }
 
     @Override
     public boolean onNavigationItemSelected( MenuItem item) {
@@ -181,9 +198,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-        this.mDrawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     private void changeInternalFragment(Fragment fragment, int fragmentContainer){
         FragmentManager supportFragmentManager = getSupportFragmentManager();
@@ -196,11 +210,3 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 }
-
-
-
-
-
-
-
-

@@ -25,6 +25,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import android.location.Location;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -137,7 +144,24 @@ public class CameraActivity extends AppCompatActivity{
             public void onClick(View view) {
                 dispatchTakePictureIntent();
             }
+        }
+    }
 
+    private void showManualLocationDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        ManualLocationFragment manualLocationFragment = ManualLocationFragment.newInstance();
+        manualLocationFragment.show(fm, "fragment_manual_location");
+
+        fm.executePendingTransactions();
+        manualLocationFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                final SharedPreferences sp = getSharedPreferences("location_preferences", Context.MODE_PRIVATE);
+                Gson gson = new Gson();
+                String json = sp.getString("manual_location", "");
+                LatLng point = gson.fromJson(json, LatLng.class);
+                takePhoto(point);
+            }
         });
 
     }
@@ -191,34 +215,19 @@ public class CameraActivity extends AppCompatActivity{
         editor.apply();
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        takePictureIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
 
-    private void showManualLocationDialog() {
-        FragmentManager fm = getSupportFragmentManager();
-        ManualLocationFragment manualLocationFragment = ManualLocationFragment.newInstance();
-        manualLocationFragment.show(fm, "fragment_manual_location");
 
-        fm.executePendingTransactions();
-        manualLocationFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                final SharedPreferences sp = getSharedPreferences("location_preferences", Context.MODE_PRIVATE);
-                Gson gson = new Gson();
-                String json = sp.getString("manual_location", "");
-                LatLng point = gson.fromJson(json, LatLng.class);
-                takePhoto(point);
-            }
-        });
 
-    }
-
-    @Override
+    /*@Override
     public void onBackPressed() {
         Intent intent = new Intent(CameraActivity.this, MainActivity.class);
         CameraActivity.this.startActivity(intent);
     }
 }
+
 
