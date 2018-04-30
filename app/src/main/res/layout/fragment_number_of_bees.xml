@@ -9,16 +9,31 @@
     tools:context="com.example.c1618639.myapplication.NumberOfBeesFragment">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:text="@string/number_of_bees_intro" />
 
-    <NumberPicker
+    <Spinner
         android:id="@+id/number_picker"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"/>
+
+    <Space
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="3" />
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/number_of_bees_description" />
 
     <EditText
         android:id="@+id/description"
@@ -26,18 +41,22 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:ems="10"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"/>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2" />
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/number_of_bees_confirm_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/number_of_bees_confirm" />
+        android:layout_weight="2"
+        android:text="@string/number_of_bees_confirm"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"/>
 
 </LinearLayout>
