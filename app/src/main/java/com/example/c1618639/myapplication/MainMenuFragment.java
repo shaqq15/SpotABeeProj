@@ -53,9 +53,7 @@ public class MainMenuFragment extends Fragment {
         cameraCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent myIntent = new Intent(getActivity(), CameraActivity.class);
-                Intent myIntent = new Intent(getActivity(), API.class);
-                myIntent.setAction("dophoto");
+                Intent myIntent = new Intent(getActivity(), CameraActivity.class);
                 getActivity().startActivity(myIntent);
             }
         });
