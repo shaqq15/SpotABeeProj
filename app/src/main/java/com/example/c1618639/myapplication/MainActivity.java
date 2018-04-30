@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,8 +171,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
                 MainActivity.this.startActivity(cameraIntent);
                 break;
-            case R.id.menu_my_gallery:
-                changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
+            case R.id.menu_imagga:
+//                changeInternalFragment(new GalleryFragment(), R.id.fragmentContainer);
+                Intent apiIntent = new Intent(MainActivity.this, API.class);
+                MainActivity.this.startActivity(apiIntent);
                 break;
             case R.id.menu_media:
                 changeInternalFragment(new MediaFragment(), R.id.fragmentContainer);

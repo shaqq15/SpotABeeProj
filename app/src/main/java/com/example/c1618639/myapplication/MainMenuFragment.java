@@ -58,14 +58,12 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-        CardView galleryCardView = v.findViewById(R.id.card_view_gallery);
+        CardView galleryCardView = v.findViewById(R.id.card_view_imagga);
         galleryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.fragmentContainer, new GalleryFragment());
-                ft.commit();
-                ft.addToBackStack(null);
+                Intent apiIntent = new Intent(getActivity(), API.class);
+               getActivity().startActivity(apiIntent);
             }
         });
 
