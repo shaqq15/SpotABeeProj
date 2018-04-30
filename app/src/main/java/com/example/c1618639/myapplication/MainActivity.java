@@ -70,6 +70,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         View header = navigationView.getHeaderView(0);
                         TextView scoreTextView = (TextView) header.findViewById(R.id.score);
                         scoreTextView.setText(getString(R.string.drawer_header_score, score));
+
+                        TextView levelTextView = (TextView) header.findViewById(R.id.level);
+
+                        if(score < 15){
+                            levelTextView.setText(getString(R.string.drawer_header_score_newbie));
+                        }else if(score < 100){
+                            levelTextView.setText(getString(R.string.drawer_header_score_intermediate));
+                        }else{
+                            levelTextView.setText(getString(R.string.drawer_header_score_senior));
+                        }
                     }
 
                     @Override

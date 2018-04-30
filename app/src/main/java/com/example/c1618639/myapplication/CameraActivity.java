@@ -174,6 +174,7 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             userImage.setImageBitmap(imageBitmap);
 
+
             // display number of bees fragment
             showNumberOfBeesDialogue();
         } else {

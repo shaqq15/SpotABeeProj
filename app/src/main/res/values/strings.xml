@@ -2,6 +2,9 @@
     <string name="app_name">Spot a Bee</string>
     <string name="drawer_header_title">Menu</string>
     <string name="drawer_header_score">Score: %1$d</string>
+    <string name="drawer_header_score_newbie">Newbie</string>
+    <string name="drawer_header_score_intermediate">Intermediate</string>
+    <string name="drawer_header_score_senior">Senior</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
