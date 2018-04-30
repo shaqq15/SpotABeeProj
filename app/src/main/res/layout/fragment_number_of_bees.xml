@@ -3,28 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.c1618639.myapplication.NumberOfBeesFragment"
+    android:gravity="center"
     android:orientation="vertical"
     android:weightSum="10"
-    android:gravity="center">
+    tools:context="com.example.c1618639.myapplication.NumberOfBeesFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="2"
         android:text="@string/number_of_bees_intro" />
 
     <NumberPicker
         android:id="@+id/number_picker"
-        android:layout_height="0dp"
-        android:layout_weight="3"
         android:layout_width="wrap_content"
-        />
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:ems="10"
+        android:inputType="textMultiLine" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"/>
+        android:layout_weight="2" />
 
     <Button
         android:id="@+id/number_of_bees_confirm_button"

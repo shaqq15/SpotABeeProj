@@ -59,16 +59,6 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
         //code adapted from https://developer.android.com/training/camera/photobasics.html#TaskPhotoView
 
         getLocationAndTakePhoto();
-
-        /*
-        Button fab = (Button) findViewById(R.id.take_photo_button);
-        fab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                getLocationAndTakePhoto();
-            }
-        });
-        */
-
     }
 
     String mCurrentPhotoPath;
@@ -180,13 +170,31 @@ public class CameraActivity extends AppCompatActivity implements OnCompleteListe
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
 
-            System.out.println("TAKEN PHOTO");
-//            ImageView userImage = (ImageView)findViewById(R.id.userImg);
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            userImage.setImageBitmap(imageBitmap);
+            ImageView userImage = (ImageView)findViewById(R.id.userImg);
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            userImage.setImageBitmap(imageBitmap);
+
+
+            // display number of bees fragment
+            showNumberOfBeesDialogue();
         } else {
             finish();
         }
+    }
+
+    private void showNumberOfBeesDialogue() {
+        FragmentManager fm = getSupportFragmentManager();
+        NumberOfBeesFragment numberOfBeesFragment = NumberOfBeesFragment.newInstance();
+        fm.beginTransaction().add(numberOfBeesFragment, "fragment_number_of_bees").commitAllowingStateLoss();
+
+
+        /*numberOfBeesFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                // obtain info and save
+            }
+        });*/
+
     }
 
     private void getLocationAndTakePhoto() {
