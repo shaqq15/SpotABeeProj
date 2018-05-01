@@ -57,6 +57,7 @@
     <string name="manual_location_pinned">You have pinned your location. If you have made a mistake, please tap again. </string>
     <string name="manual_location_confirm">Confirm selected location</string>
 
+    <string name="number_of_bees_description">Please enter a description.</string>
     <string name="number_of_bees_intro">Please enter how many bees are in the photo.</string>
     <string name="number_of_bees_confirm">Save Photo</string>
 
