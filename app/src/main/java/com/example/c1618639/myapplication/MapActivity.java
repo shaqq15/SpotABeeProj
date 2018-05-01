@@ -3,6 +3,8 @@ package com.example.c1618639.myapplication;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.media.ExifInterface;
+import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
@@ -23,6 +25,9 @@ import com.google.gson.Gson;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.FragmentManager;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, OnCompleteListener<Location> {
@@ -61,6 +66,22 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this, new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION }, MY_PERMISSION_ACCESS_FINE_LOCATION);
         }else {
             this.mFusedLocationClient.getLastLocation().addOnCompleteListener(this);
+        }
+
+        File[] files = Environment.getExternalStorageDirectory().listFiles();
+        for (int i = 0; i < files.length; ++i) {
+            File file = files[i];
+            if (!file.isDirectory()) {
+                try {
+                    final ExifInterface exifInterface = new ExifInterface(file.toString());
+                    float[] latLongArr = new float[2];
+                    if (exifInterface.getLatLong(latLongArr)) {
+                        LatLng latLong = new LatLng(latLongArr[0], latLongArr[1]);
+                        mMap.addMarker(new MarkerOptions().position(latLong).title("Photo Location"));
+                    }
+                } catch (IOException e) {
+                }
+            }
         }
     }
 
