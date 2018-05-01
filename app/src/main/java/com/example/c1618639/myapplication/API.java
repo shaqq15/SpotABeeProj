@@ -7,6 +7,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -462,11 +463,9 @@ public class API extends AppCompatActivity {
                 numberOfBeesFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialogInterface) {
-                        /*final SharedPreferences sp = getSharedPreferences("location_preferences", Context.MODE_PRIVATE);
-                        Gson gson = new Gson();
-                        String json = sp.getString("manual_location", "");
-                        LatLng point = gson.fromJson(json, LatLng.class);
-                        takePhoto(point);*/
+                        final SharedPreferences sp = getSharedPreferences("number_of_bees", Context.MODE_PRIVATE);
+                        /*String numberOfBees = sp.getString("number_of_bees", "");
+                        String description = sp.getString("description", "");*/
                     }
                 });
 
