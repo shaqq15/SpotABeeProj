@@ -19,6 +19,7 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -452,6 +453,23 @@ public class API extends AppCompatActivity {
             if(picturePath!=null) {
                 PostImageToImaggaAsync postImageToImaggaAsync = new PostImageToImaggaAsync();
                 postImageToImaggaAsync.execute();
+
+                FragmentManager fm = getSupportFragmentManager();
+                NumberOfBeesFragment numberOfBeesFragment = NumberOfBeesFragment.newInstance();
+                numberOfBeesFragment.show(fm, "fragment_number_of_bees");
+
+                fm.executePendingTransactions();
+                numberOfBeesFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+                        /*final SharedPreferences sp = getSharedPreferences("location_preferences", Context.MODE_PRIVATE);
+                        Gson gson = new Gson();
+                        String json = sp.getString("manual_location", "");
+                        LatLng point = gson.fromJson(json, LatLng.class);
+                        takePhoto(point);*/
+                    }
+                });
+
             }else{
                 somethingWentWrong();
             }
