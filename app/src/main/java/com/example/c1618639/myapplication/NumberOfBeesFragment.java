@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Button;
@@ -25,6 +26,10 @@ import android.content.SharedPreferences;
 public class NumberOfBeesFragment extends DialogFragment {
 
     public NumberOfBeesFragment() { }
+    private Button saveButton;
+    private Spinner numberOfBeesSpinner;
+    private EditText description;
+
 
     public static NumberOfBeesFragment newInstance() {
         return new NumberOfBeesFragment();
@@ -38,6 +43,27 @@ public class NumberOfBeesFragment extends DialogFragment {
         String[] items = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
+
+        saveButton = (Button) v.findViewById(R.id.number_of_bees_confirm_button);
+        saveButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final SharedPreferences sp = getActivity().getSharedPreferences("number_of_bees", Context.MODE_PRIVATE);
+                final SharedPreferences.Editor editor = sp.edit();
+
+                description = (EditText) v.findViewById(R.id.description_input);
+
+                /* why the fuck is this null
+                Spinner numberOfBeesSpinner = (Spinner) v.findViewById(R.id.number_picker);
+                String numberOfBees = numberOfBeesSpinner.getSelectedItem().toString();
+
+                editor.putString("number_of_bees", "1");
+                editor.putString("description", description.getText().toString());
+                editor.apply();*/
+                dismiss();
+            }
+        });
+
 
         return v;
     }

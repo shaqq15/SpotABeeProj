@@ -33,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:id="@+id/description_input"
         android:text="@string/number_of_bees_description" />
 
     <EditText
